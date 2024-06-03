@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Integrantes del Grupo:
 
-Things you may want to cover:
+* Andres Pirela
 
-* Ruby version
+* Daniel Guzmán
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
