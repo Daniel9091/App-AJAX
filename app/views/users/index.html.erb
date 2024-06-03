@@ -1,6 +1,8 @@
 <h1>Users</h1>
 
-<table border="1">
+<button id="load-users-btn">Cargar Usuarios</button>
+
+<table id="users-table" border="1">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -8,11 +10,32 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
+    <!-- Filas de usuarios se insertarán aquí -->
   </tbody>
 </table>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loadUsersBtn = document.getElementById('load-users-btn');
+
+    loadUsersBtn.addEventListener('click', function() {
+      fetch('/users/json')
+        .then(response => response.json())
+        .then(users => {
+          const tbody = document.querySelector('#users-table tbody');
+          tbody.innerHTML = ''; // Limpiar la tabla
+          users.forEach(user => {
+            const row = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const emailCell = document.createElement('td');
+            nameCell.textContent = user.name;
+            emailCell.textContent = user.email;
+            row.appendChild(nameCell);
+            row.appendChild(emailCell);
+            tbody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Error al cargar los usuarios:', error));
+    });
+  });
+</script>
